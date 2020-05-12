@@ -17,7 +17,7 @@
 		if ($username == $row['username'] && $pass == $row['password']) {
 			
 			$_SESSION['login'] = $username;
-			header("location: http://localhost/CoolAdmin-master/index.php");
+			header("location: http://localhost/projectUAS_WEB/index.php");
 		} else {
 			echo "<script>alert('Username Atau Password Salah')</script>";
 		}
