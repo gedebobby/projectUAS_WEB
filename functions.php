@@ -23,14 +23,37 @@
 		global $koneksi;
 
 		$result = mysqli_query($koneksi, $sql);
-		while ($row = mysqli_fetch_assoc($result)) {
+		$rows = [];
+
+		if ($result) {
+			
+			while ($row = mysqli_fetch_assoc($result)) {
 			
 			$rows[] = $row;
-		}
+			}
+		} 
+		
 
 		return $rows;
 
-	}
+	} function editSuplier($data) {
+
+		global $koneksi;
+
+		$id_lama = $data['id_suplier'];
+		$nama_suplier = $data['nama_suplier'];
+		$alamat = $data['alamat'];
+		$telepon = $data['telepon'];
+
+		$sql = "UPDATE suplier SET nama_suplier = '$nama_suplier', alamat = '$alamat', telepon = '$telepon' WHERE id_suplier = $id_lama";
+
+		mysqli_query($koneksi, $sql);
+		
+		return mysqli_affected_rows($koneksi);
+
+	} 
+
+
 
 
 

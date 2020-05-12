@@ -190,6 +190,11 @@ if (isset($_SESSION['login'])) { ?>
                                         } elseif ($_GET['page'] == 'logout') {
                                             
                                             include 'logout.php';
+                                        } elseif ($_GET['page'] == 'edit-suplier') {
+
+                                            include 'edit-suplier.php';
+                                        } elseif ($_GET['page'] == 'delete-suplier') {
+                                            include 'delete-suplier.php';
                                         }
 
                                     } else {
