@@ -9,7 +9,7 @@
             // echo "Koneksi Berhasil";
 
             $sql = "SELECT * FROM `admin`";
-            $result = mysqli_query($koneksi, $sql);
+            $result = mysqli_query($koneksi, $sql); 
     
 ?>
 

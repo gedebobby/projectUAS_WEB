@@ -239,7 +239,7 @@ if (isset($_SESSION['login'])) { ?>
 <?php 
 } else {
 
-    header("location: http://localhost/CoolAdmin-master/login.php");
+    header("location: http://localhost/projectUAS_WEB/login.php");
 
 }
 
