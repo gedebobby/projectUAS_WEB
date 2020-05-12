@@ -15,8 +15,10 @@
 		$row = mysqli_fetch_array($result);
 
 		if ($username == $row['username'] && $pass == $row['password']) {
-			
+			$email = $row['email'];
+
 			$_SESSION['login'] = $username;
+			$_SESSION['e-mail'] = $email;
 			header("location: http://localhost/projectUAS_WEB/index.php");
 		} else {
 			echo "<script>alert('Username Atau Password Salah')</script>";

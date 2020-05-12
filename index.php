@@ -63,7 +63,11 @@ if (isset($_SESSION['login'])) { ?>
                             </li>
                             <li>
                                 <a href="index.php?page=input-barang">
-                                  <i class="fas fa-book"></i>FORM INPUT BARANG</a>
+                                  <i class="fas fa-book"></i>INPUT BARANG</a>
+                            </li>
+                            <li>
+                                <a href="index.php?page=input-suplier">
+                                  <i class="fas fa-truck"></i>INPUT SUPLIER</a>
                             </li>
                             <li>
                                 <a href="index.php?page=data-barang">
@@ -116,7 +120,7 @@ if (isset($_SESSION['login'])) { ?>
                                                         <h5 class="name">
                                                             <a href="#"><?= $_SESSION['login'] ?></a>
                                                         </h5>
-                                                        <span class="email">johndoe@example.com</span>
+                                                    
                                                     </div>
                                                 </div>
                                                 <div class="account-dropdown__body">
@@ -127,10 +131,6 @@ if (isset($_SESSION['login'])) { ?>
                                                     <div class="account-dropdown__item">
                                                         <a href="#">
                                                             <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                    </div>
-                                                    <div class="account-dropdown__item">
-                                                        <a href="#">
-                                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
                                                     </div>
                                                 </div>
                                                 <div class="account-dropdown__footer">
@@ -175,7 +175,11 @@ if (isset($_SESSION['login'])) { ?>
                                             
                                             include 'edit.php';
 
-                                        } elseif ($_GET['page'] == 'register') {
+                                        } elseif ($_GET['page'] == 'input-suplier') {
+                                            
+                                            include 'input-suplier.php';
+                                        } 
+                                        elseif ($_GET['page'] == 'register') {
 
                                             include 'register2.php';
 

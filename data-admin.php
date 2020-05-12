@@ -13,11 +13,16 @@
     
 ?>
 
-<div class="user-data m-b-30">
-    <h3 class="title-3 m-b-30">
-        <i class="zmdi zmdi-account-calendar"></i>Data Admin</h3>
-        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-            <i class="zmdi zmdi-plus"></i>Add Admin</button>
+<div class="col-lg">
+    <div class="card">
+        <div class="card-body">
+                <div class="card-title">
+                    <h3 class="text-left title-2">Data Admin</h3>
+                </div><hr>
+                <a href="index.php?page=register">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small" >
+                    <i class="zmdi zmdi-plus"></i>Tambah Admin</button></a>
+                    
          
     
     <div class="table-data">
@@ -38,7 +43,7 @@
                         <div class="table-data__info">
                             <h6><?= $row['username'] ?></h6>
                             <span>
-                                <a href="#">johndoe@gmail.com</a>
+                                <a href="#"><?= $row['email'] ?></a>
                             </span>
                         </div>
                     </td>

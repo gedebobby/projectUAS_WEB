@@ -21,7 +21,7 @@
                 <th>Nama Produk</th>
                 <th>Kode Barang</th>
                 <th>Suplier</th>
-                <th>Harga Jual</th>
+                <th>Harga Jual</th> 
                 <th>Harga Beli</th>
                 <th>Stok</th>
                 <th class="text-center">Aksi</th>
