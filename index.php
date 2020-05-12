@@ -73,7 +73,10 @@ if (isset($_SESSION['login'])) { ?>
                                 <a href="index.php?page=data-suplier">
                                   <i class="fas fa-address-book"></i>DATA SUPLIER</a>
                             </li>
-                            
+                            <li>
+                                <a href="index.php?page=register">
+                                  <i class="fas fa-vcard"></i>Register</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -171,6 +174,10 @@ if (isset($_SESSION['login'])) { ?>
                                         } elseif ($_GET['page'] == 'edit') {
                                             
                                             include 'edit.php';
+
+                                        } elseif ($_GET['page'] == 'register') {
+
+                                            include 'register2.php';
 
                                         } elseif ($_GET['page'] == 'delete') {
 
