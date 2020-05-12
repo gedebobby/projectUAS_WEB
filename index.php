@@ -75,7 +75,7 @@ if (isset($_SESSION['login'])) { ?>
                             </li>
                             <li>
                                 <a href="index.php?page=register">
-                                  <i class="fas fa-vcard"></i>Register</a>
+                                  <i class="fas fa-vcard"></i>REGISTER</a>
                             </li>
                         </ul>
                     </nav>
