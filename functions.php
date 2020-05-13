@@ -51,6 +51,17 @@
 		
 		return mysqli_affected_rows($koneksi);
 
+	}
+
+	function deleteSuplier($id) {
+
+		global $koneksi;
+
+		$sql = "DELETE FROM suplier WHERE id_suplier = $id";
+		$result = mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+
 	} 
 
 

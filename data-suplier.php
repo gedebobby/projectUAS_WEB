@@ -1,5 +1,5 @@
 <?php require 'functions.php'; 
-    
+
     $data = tampilSuplier("SELECT * FROM suplier");
 ?>
 <div class="col-lg">
@@ -52,7 +52,7 @@
                                     <a href="index.php?page=edit-suplier&id=<?= $row['id_suplier'] ?>"><button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
                                         <i class="zmdi zmdi-edit"></i>
                                     </button></a>
-                                    <a href="index.php?page=hapus-suplier&id=<?= $row['id_suplier'] ?>"><button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                    <a href="index.php?page=delete-suplier&id=<?= $row['id_suplier'] ?>"><button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
                                         <i class="zmdi zmdi-delete"></i>
                                     </button></a>
                                     
