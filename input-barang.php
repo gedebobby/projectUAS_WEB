@@ -1,3 +1,9 @@
+<?php require 'functions.php';
+
+    $data = tampilSuplier("SELECT * FROM suplier ");
+    
+ ?>
+
 <div class="user-data">
     <div class="card-body">
         <div class="card-title">
@@ -14,12 +20,15 @@
                 <input id="kd_barang" name="kd_barang" type="text" class="form-control col-sm-6" required>
             </div>
             <div class="form-group">
-                <label for="suplier" class="control-label mb-1">Suplier</label>
-                <select name="suplier" id="suplier" class="form-control col-sm-4">
-                    <option value="UD. KARTIKA ASRI">UD. KARTIKA ASRI</option>
-                    <option value="UD. MAJU JAYA">UD. MAJU JAYA</option>
-                    <option value="CV. INDOESKRIM">CV. INDOESKRIM</option>
-                    <option value="UD. KERTHA ANUGERAH">UD. KERTHA ANUGERAH</option>
+                <label for="nama-suplier" class="control-label mb-1">Suplier</label>
+                <select name="nama-suplier" id="nama-suplier" class="form-control col-sm-4">
+                    <?php foreach ($data as $row) { ?>
+
+                       <option value="<?= $row['nama_suplier'] ?>"><?= $row['nama_suplier'] ?></option>
+                    
+                    <?php } ?>
+                    
+                    
                 </select>
             </div>
             <div class="form-group">
@@ -35,8 +44,6 @@
                 <input id="stock" name="stock" type="text" class="form-control col-sm-2" required>
             </div>
 
-
-                
             <div>
                 <button type="submit" class="btn btn-md btn-primary">
                     INPUT BARANG
