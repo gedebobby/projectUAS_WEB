@@ -1,7 +1,7 @@
 <?php require 'functions.php';
 
     $data = tampilSuplier("SELECT * FROM suplier ");
-    
+
  ?>
 
 <div class="user-data">
@@ -20,8 +20,8 @@
                 <input id="kd_barang" name="kd_barang" type="text" class="form-control col-sm-6" required>
             </div>
             <div class="form-group">
-                <label for="nama-suplier" class="control-label mb-1">Suplier</label>
-                <select name="nama-suplier" id="nama-suplier" class="form-control col-sm-4">
+                <label for="suplier" class="control-label mb-1">Suplier</label>
+                <select name="suplier" id="suplier" class="form-control col-sm-4">
                     <?php foreach ($data as $row) { ?>
 
                        <option value="<?= $row['nama_suplier'] ?>"><?= $row['nama_suplier'] ?></option>
