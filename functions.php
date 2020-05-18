@@ -2,6 +2,61 @@
 
 	$koneksi = mysqli_connect("localhost", "root", "", "inventory");
 
+	function inputBarang($data)	{
+		
+		global $koneksi;
+
+		$barang = $data['nama_barang'];
+		$kd_barang = $data['kd_barang'];
+		$suplier = $data['suplier'];
+		$beli = $data['harga_beli'];
+		$jual = $data['harga_jual'];
+		$stock = $data['stock']; 
+
+		$sql = "INSERT into barang VALUES('','$barang','$kd_barang','$suplier','$beli','$jual','$stock')";
+		mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+
+	}
+
+	function tampilBarang($sql) {
+
+		global $koneksi;
+
+		$result = mysqli_query($koneksi, $sql);
+		$rows = [];
+
+		if ($result) {
+			
+			while ($row = mysqli_fetch_assoc($result)) {
+			
+			$rows[] = $row;
+			}
+		} 
+		return $rows;
+	}
+
+	function editBarang($data) {
+
+		global $koneksi;
+
+		$idlama = $_POST['idlama'];
+		$barang = $_POST['nama_barang'];
+		$kd_barang = $_POST['kd_barang'];
+		$suplier = $_POST['suplier'];
+		$beli = $_POST['harga_beli'];
+		$jual = $_POST['harga_jual'];
+		$stock = $_POST['stock'];
+
+		$sql = "UPDATE `barang` SET `nama_barang`='".$barang."',`kd_barang`='".$kd_barang."',
+		`suplier`='".$suplier."', `harga_beli`='".$beli."', `harga_jual`='".$jual."', `stock`='".$stock."' WHERE `id`='".$idlama."';";
+		
+		mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+	}
+
 	function inputSuplier($data){
 
 		global $koneksi;
@@ -12,7 +67,7 @@
 
 		$sql = "INSERT INTO suplier VALUES ('', '$nama_suplier', '$alamat', '$telepon')";
 
-		$result = mysqli_query($koneksi, $sql);
+		mysqli_query($koneksi, $sql);
 		
 		return mysqli_affected_rows($koneksi);
 		
@@ -63,6 +118,39 @@
 		return mysqli_affected_rows($koneksi);
 
 	} 
+
+	function tampilAdmin($sql){
+		global $koneksi;
+
+		$result = mysqli_query($koneksi, $sql);
+		$rows = [];
+
+		if ($result) {
+			
+			while ($row = mysqli_fetch_assoc($result)) {
+			
+			$rows[] = $row;
+			}
+		} 
+
+		return $rows;
+	}
+
+	function register($data){
+
+		global $koneksi;
+
+		$username = $data['username'];
+		$email = $data['email'];
+		$password = $data['password'];
+		$password2 = $data['password2'];
+
+		$sql = "INSERT INTO admin VALUES ('', '$username', '$email', '$password', '$password2')";
+		mysqli_query($koneksi, $sql);
+
+		return mysqli_affected_rows($koneksi);
+
+	}
 
 
 

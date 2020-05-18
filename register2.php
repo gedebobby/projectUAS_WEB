@@ -1,3 +1,33 @@
+<?php require 'functions.php';
+global $koneksi;
+
+if (isset($_POST['register'])) {
+
+    register($_POST);
+    var_dump(register($_POST));
+    
+    if (register($_POST) < 0) {
+
+        echo '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+            <span class="badge badge-pill badge-success">Berhasil</span>
+            Data Suplier Berhasil Ditambahkan
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            </div>';
+
+    } else {
+        echo '<script>alert("Data Suplier Gagal Diinput")</script>';
+    }
+
+        
+}
+
+
+
+
+
+?>
 <div class="col-lg">
     <div class="card">
         <div class="card-body">
@@ -31,7 +61,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-md btn-primary col-3">Register</button>
+                            <button type="submit" name="register" class="btn btn-md btn-primary col-3">Register</button>
                         </div>
                     </form>
                     

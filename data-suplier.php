@@ -3,7 +3,7 @@
     $data = tampilSuplier("SELECT * FROM suplier");
 ?>
 <div class="col-lg">
-    <div class="card">
+    <div class="card"> 
         <div class="card-body">
                 <div class="card-title">
                     <h3 class="text-left title-2">Data Suplier</h3>

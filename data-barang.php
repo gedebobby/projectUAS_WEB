@@ -1,18 +1,13 @@
-<?php  
+<?php require 'functions.php';
 
-        $koneksi = mysqli_connect("localhost", "root", "", "inventory");
-
-        if(!$koneksi){
-            echo "Koneksi Gagal";
-
-        } else {
-            // echo "Koneksi Berhasil";
-
-            $sql = "SELECT * FROM `barang`";
-            $result = mysqli_query($koneksi, $sql);
+    $databarang = tampilBarang("SELECT * FROM barang");
     
 ?>
-
+<div class="mb-2">
+    <a href="index.php?page=input-barang">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+        <i class="zmdi zmdi-plus"></i>Add Barang</button></a>
+</div>
 <div class="table-responsive table--no-card m-b-30">
     <table class="table table-borderless table-striped table-earning">
         <thead>
@@ -29,9 +24,8 @@
         </thead>
         <tbody>
             <?php $i=1 ?>
-            <?php while ($row = mysqli_fetch_array($result)) {
-                # code...
-             ?>
+            <?php foreach ($databarang as $row) { ?>
+
             <tr>
                 <td><?= $i ?></td>
                 <td><?= $row['nama_barang'] ?></td>
@@ -56,5 +50,4 @@
             <?php } ?>             
         </tbody>
     </table>
-<?php } ?>
 </div>

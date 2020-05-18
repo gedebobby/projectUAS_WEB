@@ -9,14 +9,9 @@
         if (isset($_POST['edit'])) {
         
             if (editSuplier($_POST) > 0) {
-
-                echo '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-            <span class="badge badge-pill badge-success">Berhasil</span>
-            Data Suplier Berhasil Diedit.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>';
+                
+                echo "<script>alert('Data Suplier Berhasil Diedit')</script>";
+                echo "<script>location='index.php?page=data-suplier'</script>";
 
             } else {
                 

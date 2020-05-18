@@ -51,16 +51,16 @@
                         <span class="role admin">admin</span>
                     </td>
                     <td>
-                    <button class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    <!-- <a href="index.php?page=edit-admin"><button class="btn btn-warning">
+                    <i class="fa fa-pencil-square-o"></i></button></a> -->
+
+                    <!-- <a href="index.php?page=delete-admin">
+                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button></a> -->
                 </td>
                 </tr>
             <?php } ?>
             </tbody>
         </table>
-    </div>
-    <div class="user-data__footer">
-        <button class="au-btn au-btn-load">load more</button>
     </div>
 </div>
 

@@ -1,6 +1,22 @@
 <?php require 'functions.php';
 
-    $data = tampilSuplier("SELECT * FROM suplier ");
+    $datasuplier = tampilSuplier("SELECT * FROM suplier ");
+
+    if(isset($_POST['submit'])) {
+        if (inputBarang($_POST) > 0) {
+            
+            echo '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+            <span class="badge badge-pill badge-success">Berhasil</span>
+            Data Suplier Berhasil Ditambahkan
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            </div>';
+
+        } else {
+            echo '<script>alert("Data Suplier Gagal Diinput")</script>';
+        }
+    }
 
  ?>
 
@@ -10,7 +26,7 @@
             <h3 class="text-left title-2">INPUT DATA BARANG </h3>
         </div>
         <hr>
-        <form action="input_aksi.php" method="post" novalidate="novalidate">
+        <form action="" method="post" novalidate="novalidate">
             <div class="form-group">
                 <label for="nama_barang" class="control-label mb-1">Nama Barang</label>
                 <input id="nama_barang" name="nama_barang" type="text" class="form-control col-sm-6" required>
@@ -22,7 +38,7 @@
             <div class="form-group">
                 <label for="suplier" class="control-label mb-1">Suplier</label>
                 <select name="suplier" id="suplier" class="form-control col-sm-4">
-                    <?php foreach ($data as $row) { ?>
+                    <?php foreach ($datasuplier as $row) { ?>
 
                        <option value="<?= $row['nama_suplier'] ?>"><?= $row['nama_suplier'] ?></option>
                     
@@ -45,7 +61,7 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-md btn-primary">
+                <button type="submit" name="submit" class="btn btn-md btn-primary">
                     INPUT BARANG
                 </button>
             </div>
