@@ -136,19 +136,127 @@
 		return $rows;
 	}
 
+	function editAdmin($data) {
+
+		global $koneksi;
+
+		$idlama = $data['id_lama'];
+		$username = $data['username'];
+		$email = $data['email'];
+
+		$sql = "UPDATE admin SET username = '$username', email = '$email' WHERE id_admin = $idlama";
+
+		$result = mysqli_query($koneksi, $sql);
+		
+		return mysqli_affected_rows($koneksi);
+
+
+	} 
+
+// ONDEN SUUD
+	function editPass($data) { 
+
+		global $koneksi;
+
+		$idlama = $data['id_lama'];
+		$password = $data['password'];
+		$password1 = $data['password1'];
+		$password2 = $data['password2'];
+
+		// cek pass lama
+		$result = mysqli_query($koneksi, "SELECT * FROM admin WHERE id_admin = $idlama");
+		$row = mysqli_fetch_assoc($result);
+
+		if ($password == $row['password']) {
+
+			if ($password1 !== $password2) {
+				
+				echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                         <span class="badge badge-pill badge-danger">Notice</span> Password tidak sama
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+
+			return false;
+
+			}
+
+
+		} else {
+
+			echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                         <span class="badge badge-pill badge-danger">Notice</span> Password lama tidak sesuai
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+
+			return false;
+		}
+
+		$sql2 = "UPDATE admin SET password = '$password1' WHERE id_admin = $idlama";
+		mysqli_query($koneksi, $sql2);
+		
+		return mysqli_affected_rows($koneksi);
+
+	}
+
 	function register($data){
 
 		global $koneksi;
 
 		$username = $data['username'];
 		$email = $data['email'];
-		$password = $data['password'];
-		$password2 = $data['password2'];
+		$password = mysqli_real_escape_string($koneksi, $data['password']);
+		$password2 = mysqli_real_escape_string($koneksi, $data['password2']);
 
-		$sql = "INSERT INTO admin VALUES ('', '$username', '$email', '$password', '$password2')";
+		// cek username
+		$result = mysqli_query($koneksi, "SELECT username FROM admin WHERE username = '$username'");
+
+		if ( mysqli_fetch_assoc($result)) {
+			
+			echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                         <span class="badge badge-pill badge-danger">Notice</span>
+                         Username Sudah Terdaftar
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+            return false;
+
+        }
+
+		// Konfirmasi pass
+		if ($password !== $password2) {
+			
+			echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                         <span class="badge badge-pill badge-danger">Notice</span> Password tidak sama
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+
+			return false;
+		} 
+
+
+		$sql = "INSERT INTO admin VALUES ('', '$username', '$email', '$password')";
 		mysqli_query($koneksi, $sql);
 
 		return mysqli_affected_rows($koneksi);
+
+	}
+
+	
+
+	function jumlah($sql){
+
+		global $koneksi;
+
+		$result = mysqli_query($koneksi, $sql);
+
+		return mysqli_num_rows($result);
 
 	}
 

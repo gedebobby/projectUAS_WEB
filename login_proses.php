@@ -1,30 +1,29 @@
 <?php session_start();
-	
-	$koneksi = mysqli_connect("localhost", "root", "", "inventory");
 
-	$username = $_POST['username'];
-	$pass = $_POST['password'];
+require 'functions.php';
 
-	if (!$koneksi) {
-		echo "Koneksi Gagal";
+$username = $_POST['username'];
+$pass = $_POST['password'];
+
+$row = tampilAdmin("SELECT * FROM admin WHERE username = '$username'")[0];
+
+
+
+
+	if ($username == $row['username'] && $pass == $row['password']) {
+		$email = $row['email'];
+
+		$_SESSION['login'] = $row['username'];
+		$_SESSION['e-mail'] = $row['email'];
+		header("location: http://localhost/projectUAS_WEB/index.php");
+
 	} else {
+		echo "<script>alert('Username Atau Password Salah')</script>";
+		header("location: http://localhost/projectUAS_WEB/login.php");
 		
-		$sql = "SELECT * FROM admin WHERE username = '$username'";
-		$result = mysqli_query($koneksi, $sql);
-
-		$row = mysqli_fetch_array($result);
-
-		if ($username == $row['username'] && $pass == $row['password']) {
-			$email = $row['email'];
-
-			$_SESSION['login'] = $username;
-			$_SESSION['e-mail'] = $email;
-			header("location: http://localhost/projectUAS_WEB/index.php");
-		} else {
-			echo "<script>alert('Username Atau Password Salah')</script>";
-		}
-
 	}
+
+
 	
 
 	

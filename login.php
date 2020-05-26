@@ -1,9 +1,48 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+
+if (isset($_SESSION['login'])) {
+    
+    header("location: http://localhost/projectUAS_WEB/index.php");
+    exit;
+}
+
+require 'functions.php';
+
+if (isset($_POST['login'])) {
+    
+    $username = $_POST['username'];
+    $pass = $_POST['password'];
+
+    $result = mysqli_query($koneksi, "SELECT * FROM admin WHERE username = '$username'");
+
+    if (mysqli_num_rows($result) === 1) {
+
+        $row = mysqli_fetch_assoc($result);
+
+    
+
+        if ($pass == $row['password']) {
+            
+            $_SESSION['login'] = $row['username'];
+            header("location: http://localhost/projectUAS_WEB/index.php");
+           
+            exit;
+        }
+        
+    } 
+
+    $error = true;
+    
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
-    <!-- Required meta tags-->
+    <!-- Required meta tags--> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
@@ -41,10 +80,26 @@
         <div class="page-content--bge5">
             <div class="container">
                 <div class="login-wrap">
+                    
+                <?php 
+                    if (isset($error)) {
+                        
+                        echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                         <span class="badge badge-pill badge-danger">Notice</span>
+                         Username atau Password Salah
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+                    }
+                 ?>
+                
+
+
                     <div class="login-content">
                         <h1 class="text-center">LOG IN</h1>
                         <div class="login-form">
-                            <form action="login_proses.php" method="post">
+                            <form action="" method="post">
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
@@ -53,15 +108,8 @@
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Ingat Saya
-                                    </label>
-                                    <label>
-                                        <a href="#">Lupa Password?</a>
-                                    </label>
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" name="login">Login</button>
                             </form>
                         </div>
                     </div>

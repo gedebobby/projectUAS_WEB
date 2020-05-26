@@ -1,34 +1,59 @@
-<?php require 'functions.php';
-global $koneksi;
+<?php require 'functions.php'; ?>
 
-if (isset($_POST['register'])) {
-
-    register($_POST);
-    var_dump(register($_POST));
-    
-    if (register($_POST) < 0) {
-
-        echo '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-            <span class="badge badge-pill badge-success">Berhasil</span>
-            Data Suplier Berhasil Ditambahkan
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-            </div>';
-
-    } else {
-        echo '<script>alert("Data Suplier Gagal Diinput")</script>';
-    }
-
-        
-}
-
-
-
-
-
-?>
 <div class="col-lg">
+    <?php  
+        if (isset($_POST['register'])) {
+    
+            if ($_POST['password'] == $_POST['password2']) {
+                
+                tampilAdmin("SELECT * FROM admin");
+                $user = $_POST['username'];
+                $result = mysqli_query($koneksi, "SELECT * FROM admin WHERE username = '$user'");
+                
+                $row = mysqli_num_rows($result);
+            
+                if ($row == 0) {
+            
+                    if (register($_POST) > 0) {
+            
+                        echo '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                         <span class="badge badge-pill badge-success">Berhasil</span>
+                         Berhasil Membuat Akun
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+            
+                    } else {
+
+                        echo "gagal";
+                    }
+            
+                } else {
+
+                    echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                         <span class="badge badge-pill badge-danger">Coba Lagi</span>
+                         Username Sudah Terdaftar
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+                }
+                
+            } else {
+
+                echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                         <span class="badge badge-pill badge-danger">Coba Lagi</span>
+                         Password Tidak Sama
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                         </div>';
+            }
+        }
+
+    ?>
+
     <div class="card">
         <div class="card-body">
             <div class="card-title">

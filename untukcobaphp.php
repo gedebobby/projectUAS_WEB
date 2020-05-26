@@ -3,14 +3,15 @@
 if (isset($_POST['register'])) {
 	
 	if ($_POST['password'] == $_POST['password2']) {
-	
+		
+		tampilAdmin("SELECT * FROM admin");
 		$user = $_POST['username'];
 		$result = mysqli_query($koneksi, "SELECT * FROM admin WHERE username = '$user'");
 		$row = mysqli_num_rows($result);
 	
 		if ($row == 0) {
 	
-			if (inputSuplier($_POST) > 0) {
+			if (register($_POST) > 0) {
 	
 				echo "Berhasil";
 	
@@ -27,29 +28,29 @@ if (isset($_POST['register'])) {
 	}
 }
 
-if ($_POST['password'] == $_POST['password2']) {
+// if ($_POST['password'] == $_POST['password2']) {
 	
-	$user = $_POST['username'];
-	$result = mysqli_query($koneksi, "SELECT * FROM admin WHERE username = '$user'");
-	$row = mysqli_num_rows($result);
+// 	$user = $_POST['username'];
+// 	$result = mysqli_query($koneksi, "SELECT * FROM admin WHERE username = '$user'");
+// 	$row = mysqli_num_rows($result);
 
-	if ($row == 0) {
+// 	if ($row == 0) {
 
-		if (inputSuplier($_POST) > 0) {
+// 		if (inputSuplier($_POST) > 0) {
 
-			echo "Berhasil";
+// 			echo "Berhasil";
 
-		} else {
-			echo "gagal";
-		}
+// 		} else {
+// 			echo "gagal";
+// 		}
 
-	} else {
-		echo 'user sudah ada';
-	}
+// 	} else {
+// 		echo 'user sudah ada';
+// 	}
 	
-} else {
-	echo "password tidak sama";
-}
+// } else {
+// 	echo "password tidak sama";
+// }
 
 
 

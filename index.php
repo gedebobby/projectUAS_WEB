@@ -1,7 +1,11 @@
-<?php session_start(); 
+<?php  session_start(); 
 
-if (isset($_SESSION['login'])) { ?>
-    
+if (!isset($_SESSION['login'])) { 
+
+    header("location: http://localhost/projectUAS_WEB/login.php");
+    exit;
+}
+?>
     
     <!DOCTYPE html>
     <html lang="en">
@@ -46,7 +50,8 @@ if (isset($_SESSION['login'])) { ?>
             <aside class="menu-sidebar d-none d-lg-block">
                 <div class="logo">
                     <a href="#">
-                        <img src="images/icon/logo.png" alt="Cool Admin" />
+                        <!-- <img src="images/icon/logo.png" alt="Cool Admin" /> -->
+                        <h1>TOKO SHOP</h1>
                     </a>
                 </div>
                 <div class="menu-sidebar__content js-scrollbar1">
@@ -100,12 +105,15 @@ if (isset($_SESSION['login'])) { ?>
                                         <i class="zmdi zmdi-search"></i>
                                     </button>
                                 </form>
+
+                               
                                 <div class="header-button">
                                     <div class="account-wrap">
                                         <div class="account-item clearfix js-item-menu">
                                             <div class="image">
                                                 <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                             </div>
+
                                             <div class="content">
                                                 <a class="js-acc-btn" href="#"><?= $_SESSION['login'] ?></a>
                                             </div>
@@ -123,14 +131,15 @@ if (isset($_SESSION['login'])) { ?>
                                                     
                                                     </div>
                                                 </div>
+                                                    
                                                 <div class="account-dropdown__body">
                                                     <div class="account-dropdown__item">
-                                                        <a href="#">
-                                                            <i class="zmdi zmdi-account"></i>Account</a>
+                                                        <a href="index.php?page=edit-akun">
+                                                            <i class="zmdi zmdi-account"></i>Edit Akun</a>
                                                     </div>
                                                     <div class="account-dropdown__item">
-                                                        <a href="#">
-                                                            <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                        <a href="index.php?page=edit-password">
+                                                            <i class="zmdi zmdi-lock"></i>Ganti Password</a>
                                                     </div>
                                                 </div>
                                                 <div class="account-dropdown__footer">
@@ -181,7 +190,7 @@ if (isset($_SESSION['login'])) { ?>
                                         } 
                                         elseif ($_GET['page'] == 'register') {
 
-                                            include 'register2.php';
+                                            include 'register.php';
 
                                         } elseif ($_GET['page'] == 'delete') {
 
@@ -193,8 +202,18 @@ if (isset($_SESSION['login'])) { ?>
                                         } elseif ($_GET['page'] == 'edit-suplier') {
 
                                             include 'edit-suplier.php';
+
                                         } elseif ($_GET['page'] == 'delete-suplier') {
+
                                             include 'delete-suplier.php';
+
+                                        } elseif ($_GET['page'] == 'edit-akun') {
+
+                                            include 'edit-akun.php';
+
+                                        } elseif ($_GET['page'] == 'edit-password') {
+
+                                            include 'edit-pass.php';
                                         }
 
                                     } else {
@@ -252,13 +271,4 @@ if (isset($_SESSION['login'])) { ?>
     </html>
 <!-- end document-->
 
-<?php 
-} else {
 
-    header("location: http://localhost/projectUAS_WEB/login.php");
-
-}
-
-
-
-?>

@@ -2,6 +2,7 @@
     
     $id = $_GET['id'];
 
+    $datasuplier = tampilSuplier("SELECT * FROM suplier ");
     $barang = tampilBarang("SELECT * FROM `barang` WHERE id ='". $id ."'")[0];
        
     if (isset($_POST['submit'])) {
@@ -24,7 +25,6 @@
 ?>
 
 
-
 <div class="user-data">
     <div class="card-body">
         <div class="card-title">
@@ -43,12 +43,13 @@
             </div>
             <div class="form-group">
                 <label for="suplier" class="control-label mb-1">Suplier</label>
-                <select name="suplier" id="suplier" class="form-control col-sm-4">
-                    <option value="UD. KARTIKA ASRI">UD. KARTIKA ASRI</option>
-                    <option value="UD. MAJU JAYA">UD. MAJU JAYA</option>
-                    <option value="CV. INDOESKRIM">CV. INDOESKRIM</option>
-                    <option value="UD. KERTHA ANUGERAH">UD. KERTHA ANUGERAH</option>
-                </select>
+                <select name="suplier" id="suplier" class="form-control col-sm-4"> 
+                    <?php foreach ($datasuplier as $row) { ?>
+
+                       <option value="<?= $row['nama_suplier'] ?>"><?= $row['nama_suplier'] ?></option>
+                    
+                    <?php } ?>                
+                </select>   
             </div>
             <div class="form-group">
                 <label for="harga_beli" class="control-label mb-1">Harga Beli</label>
