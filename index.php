@@ -1,4 +1,5 @@
-<?php  session_start(); 
+<?php session_start(); 
+
 
 if (!isset($_SESSION['login'])) { 
 
@@ -98,15 +99,7 @@ if (!isset($_SESSION['login'])) {
                 <header class="header-desktop">
                     <div class="section__content section__content--p30">
                         <div class="container-fluid">
-                            <div class="header-wrap">
-                                <form class="form-header" action="" method="POST">
-                                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                    <button class="au-btn--submit" type="submit">
-                                        <i class="zmdi zmdi-search"></i>
-                                    </button>
-                                </form>
-
-                               
+                            <div class="header-wrap float-right">                               
                                 <div class="header-button">
                                     <div class="account-wrap">
                                         <div class="account-item clearfix js-item-menu">
@@ -243,7 +236,21 @@ if (!isset($_SESSION['login'])) {
             </div>
 
         <!-- Jquery JS-->
-        <script src="vendor/jquery-3.2.1.min.js"></script>
+        <script src="vendor/jquery-3.2.1.min.js">
+            
+            // $(document).ready(function(){
+            //     $("#search").keyup(function(){
+
+            //         var text = $(this).val();
+
+            //     });
+
+
+            // });
+
+
+
+        </script>
         <!-- Bootstrap JS-->
         <script src="vendor/bootstrap-4.1/popper.min.js"></script>
         <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>

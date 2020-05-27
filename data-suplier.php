@@ -8,11 +8,20 @@
                 <div class="card-title">
                     <h3 class="text-left title-2">Data Suplier</h3>
                 </div><hr>
-                <div class="">
+                <div class="mb-2">
                     <a href="index.php?page=input-suplier">
                     <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                         <i class="zmdi zmdi-plus"></i>Add Suplier
                     </button></a>
+
+                    <div class="float-right">  
+                        <form class="form-header" action="" method="POST">
+                            <input class="au-input au-input--xl" type="text" autocomplete="off" name="search" placeholder="Cari Nama Suplier" style="border: 1px solid black" />
+                            <button class="au-btn--submit ml-1" type="submit" style="background-color: #101010">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>       
+                        </form>
+                    </div>
                 </div>
                 
             <div class="table-responsive table-data">

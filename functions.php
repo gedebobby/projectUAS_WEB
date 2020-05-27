@@ -153,7 +153,7 @@
 
 	} 
 
-// ONDEN SUUD
+
 	function editPass($data) { 
 
 		global $koneksi;

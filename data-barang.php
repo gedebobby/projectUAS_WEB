@@ -3,11 +3,25 @@
     $databarang = tampilBarang("SELECT * FROM barang");
     
 ?>
-<div class="mb-2">
+<div class="mb-3">
+    
+    
     <a href="index.php?page=input-barang">
-        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-        <i class="zmdi zmdi-plus"></i>Add Barang</button></a>
+    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+    <i class="zmdi zmdi-plus"></i>Add Barang</button></a>
+      
+    <div class="float-right">  
+    <form class="form-header" action="" method="POST">
+        <input class="au-input au-input--xl" type="text" name="search" id="search" autocomplete="off" name="search" placeholder="Cari Nama Barang" />
+        <button class="au-btn--submit ml-1" type="submit" name="search" style="background-color: #101010">
+            <i class="zmdi zmdi-search"></i>
+        </button>
+        
+    </form>
+    </div>  
+        
 </div>
+
 <div class="table-responsive table--no-card m-b-30">
     <table class="table table-borderless table-striped table-earning">
         <thead>
