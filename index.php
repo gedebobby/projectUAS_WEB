@@ -50,10 +50,10 @@ if (!isset($_SESSION['login'])) {
             <!-- MENU SIDEBAR-->
             <aside class="menu-sidebar d-none d-lg-block">
                 <div class="logo">
-                    <a href="#">
+                   
                         <!-- <img src="images/icon/logo.png" alt="Cool Admin" /> -->
                         <h1>TOKO SHOP</h1>
-                    </a>
+                    
                 </div>
                 <div class="menu-sidebar__content js-scrollbar1">
                     <nav class="navbar-sidebar">
@@ -67,14 +67,8 @@ if (!isset($_SESSION['login'])) {
                                 <a href="index.php?page=data-admin">
                                     <i class="fas fa-user"></i>DATA ADMIN</a>
                             </li>
-                            <li>
-                                <a href="index.php?page=input-barang">
-                                  <i class="fas fa-book"></i>INPUT BARANG</a>
-                            </li>
-                            <li>
-                                <a href="index.php?page=input-suplier">
-                                  <i class="fas fa-truck"></i>INPUT SUPLIER</a>
-                            </li>
+                            
+                            
                             <li>
                                 <a href="index.php?page=data-barang">
                                   <i class="fas fa-database"></i>DATA BARANG</a>

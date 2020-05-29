@@ -14,10 +14,7 @@
                              <span aria-hidden="true">×</span>
                          </button>
                          </div>';
-            } else {
-
-                echo mysqli_error($koneksi);
-            }
+            } 
     
         }
 

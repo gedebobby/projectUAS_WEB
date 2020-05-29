@@ -69,7 +69,7 @@
             <div>
                 <button type="submit" name="submit" class="btn btn-md btn-primary">EDIT</button>
                 <a href="index.php?page=data-barang">
-                    <button type="submit" class="btn btn-md btn-danger">BATAL</button>
+                    <button type="submit" class="btn btn-md btn-danger">KEMBALI</button>
                 </a>
             </div>
         </form>        

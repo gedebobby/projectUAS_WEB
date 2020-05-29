@@ -10,14 +10,19 @@
         
             if (editSuplier($_POST) > 0) {
                 
-                echo "<script>alert('Data Suplier Berhasil Diedit')</script>";
-                echo "<script>location='index.php?page=data-suplier'</script>";
+                echo '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                <span class="badge badge-pill badge-success">Berhasil</span>
+                Data Suplier Berhasil Diedit
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>';
 
             } else {
                 
                 echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                     <span class="badge badge-pill badge-danger">Success</span>
-                    You successfully read this important alert.
+                    Data Suplier Gagal Diedit
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -49,7 +54,7 @@
                             <input id="telepon" name="telepon" type="text" value="<?= $row['telepon'] ?>" class="form-control" required>
                         </div>
                         <div>
-                            <button type="submit" name="edit" class="btn btn-md btn-primary col-3">EDIT</button>
+                            <button type="submit" name="edit" class="btn btn-md btn-primary">EDIT SUPLIER</button>
                             <a href="index.php?page=data-suplier">
                             <button type="submit" name="batal" class="btn btn-md btn-danger">BATAL</button></a>
                         </div>
