@@ -1,7 +1,7 @@
 <?php 
 session_start(); 
 
-if (isset($_SESSION['login'])) {
+if (isset($_SESSION['login-admin']) || isset($_SESSION['login-op'])) {
     
     header("location: http://localhost/projectUAS_WEB/index.php");
     exit;
@@ -20,15 +20,24 @@ if (isset($_POST['login'])) {
 
         $row = mysqli_fetch_assoc($result);
 
-    
-
         if ($pass == $row['password']) {
             
-            $_SESSION['login'] = $row['username'];
-            header("location: http://localhost/projectUAS_WEB/index.php");
+            if ($row['role'] == 'admin') {
+
+                $_SESSION['login-admin'] = $row['username'];
+                header("location: http://localhost/projectUAS_WEB/index.php");
+                
+
+            } elseif ($row['role'] == 'operator') {
+
+                $_SESSION['login-op'] = $row['username'];
+                header("location: http://localhost/projectUAS_WEB/index.php");
+                exit;
+            }
+            
            
-            exit;
-        }
+            
+        } 
         
     } 
 

@@ -7,14 +7,14 @@
             
             echo '<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
             <span class="badge badge-pill badge-success">Berhasil</span>
-            Data Suplier Berhasil Ditambahkan
+            Data Barang Berhasil Ditambahkan
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
             </div>';
 
         } else {
-            echo '<script>alert("Data Suplier Gagal Diinput")</script>';
+            echo '<script>alert("Data Barang Gagal Diinput")</script>';
         }
     }
 

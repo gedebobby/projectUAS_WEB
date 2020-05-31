@@ -1,4 +1,35 @@
-<?php require 'functions.php'; ?>
+<?php require 'functions.php'; 
+
+    if (@$_SESSION['login-admin']) {
+        
+        $user = $_SESSION['login-admin'];
+
+    } elseif(@$_SESSION['login-op']) {
+
+        $user = $_SESSION['login-op'];
+
+    }
+
+    $admin = tampilAdmin("SELECT * FROM admin WHERE username = '$user'");
+
+    $pass = $admin[0]['password'];
+
+?>
+
+    <?php if ( $pass == '123'): ?>
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading mb-2">WELCOME, <?= $user ?></h4>
+            <p>Selamat, Anda Sudah berhasil Login. <br> Anda menggunakan kata sandi default, mohon untuk mengganti password default anda untuk alasan keamanan dan privasi, Terima Kasih</p>
+            <hr>
+            <p class="mb-0">Jika lupa dengan password anda, silahkan kontak Admin untuk melakukan perubahan/reset password.</p>
+        </div>
+      
+    <?php endif ?>
+
+    
+
+   
+
 
 <section class="statistic statistic2">
         <div class="row">

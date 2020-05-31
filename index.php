@@ -1,13 +1,20 @@
 <?php session_start(); 
 
 
-if (!isset($_SESSION['login'])) { 
+if (isset($_SESSION['login-admin']) || isset($_SESSION['login-op'])) { 
 
-    header("location: http://localhost/projectUAS_WEB/login.php");
-    exit;
-}
-?>
-    
+    if (@$_SESSION['login-admin']) {
+        
+        $user = $_SESSION['login-admin'];
+
+    } elseif(@$_SESSION['login-op']) {
+
+        $user = $_SESSION['login-op'];
+
+    }
+
+ ?>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -60,27 +67,35 @@ if (!isset($_SESSION['login'])) {
                         <ul class="list-unstyled navbar__list">
                             <li>
                                 <a class="js-arrow" href="index.php">
-                                  <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                                
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
-                            <li>
+                            
+                            <?php if (@$_SESSION['login-admin']): ?>
+                                <li>
                                 <a href="index.php?page=data-admin">
                                     <i class="fas fa-user"></i>DATA ADMIN</a>
-                            </li>
+                                </li>
+                            <?php endif ?>
+                                
                             
-                            
+
                             <li>
-                                <a href="index.php?page=data-barang">
-                                  <i class="fas fa-database"></i>DATA BARANG</a>
+                            <a href="index.php?page=data-barang">
+                              <i class="fas fa-database"></i>DATA BARANG</a>
                             </li>
                             <li>
                                 <a href="index.php?page=data-suplier">
                                   <i class="fas fa-address-book"></i>DATA SUPLIER</a>
                             </li>
-                            <li>
+                            
+                            <?php if (@$_SESSION['login-admin']): ?>
+                                <li>
                                 <a href="index.php?page=register">
                                   <i class="fas fa-vcard"></i>REGISTER</a>
-                            </li>
+                                </li> 
+                            <?php endif ?>
+                           
+                           
                         </ul>
                     </nav>
                 </div>
@@ -102,7 +117,7 @@ if (!isset($_SESSION['login'])) {
                                             </div>
 
                                             <div class="content">
-                                                <a class="js-acc-btn" href="#"><?= $_SESSION['login'] ?></a>
+                                                <a class="js-acc-btn" href="#"><?= $user ?></a>
                                             </div>
                                             <div class="account-dropdown js-dropdown">
                                                 <div class="info clearfix">
@@ -113,7 +128,7 @@ if (!isset($_SESSION['login'])) {
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="name">
-                                                            <a href="#"><?= $_SESSION['login'] ?></a>
+                                                            <a href="#"><?= $user ?></a>
                                                         </h5>
                                                     
                                                     </div>
@@ -210,10 +225,6 @@ if (!isset($_SESSION['login'])) {
                                     }
                                  ?> 
 
-
-                                
-                            
-                                
                                     <div class="copyright">
                                         <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
                                     </div>
@@ -245,6 +256,7 @@ if (!isset($_SESSION['login'])) {
 
 
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Bootstrap JS-->
         <script src="vendor/bootstrap-4.1/popper.min.js"></script>
         <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -266,10 +278,17 @@ if (!isset($_SESSION['login'])) {
 
         <!-- Main JS-->
         <script src="js/main.js"></script>
+        <script src="js/tes.js"></script>
 
     </body>
 
     </html>
 <!-- end document-->
+<?php 
 
+} else {
+     header("location: http://localhost/projectUAS_WEB/login.php");
+    
+}
 
+?>

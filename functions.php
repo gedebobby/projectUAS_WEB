@@ -2,7 +2,7 @@
 
 	$koneksi = mysqli_connect("localhost", "root", "", "inventory");
 
-	function inputBarang($data)	{
+	function inputBarang($data)	{ 
 		
 		global $koneksi;
 
@@ -208,6 +208,7 @@
 
 		$username = $data['username'];
 		$email = $data['email'];
+		$role = $data['role'];
 		$password = mysqli_real_escape_string($koneksi, $data['password']);
 		$password2 = mysqli_real_escape_string($koneksi, $data['password2']);
 
@@ -241,7 +242,7 @@
 		} 
 
 
-		$sql = "INSERT INTO admin VALUES ('', '$username', '$email', '$password')";
+		$sql = "INSERT INTO admin VALUES ('', '$username', '$email', '$role', '$password')";
 		mysqli_query($koneksi, $sql);
 
 		return mysqli_affected_rows($koneksi);
@@ -257,6 +258,25 @@
 		$result = mysqli_query($koneksi, $sql);
 
 		return mysqli_num_rows($result);
+
+	}
+
+	function cariBarang($keyword) {
+
+		global $koneksi;
+
+		$sql = "SELECT * FROM barang WHERE nama_barang LIKE '$keyword'";
+		$result = mysqli_query($koneksi, $sql);
+		$rows = [];
+
+		if ($result) {
+			
+			while ($row = mysqli_fetch_assoc($result)) {
+			
+			$rows[] = $row;
+			}
+		} 
+		return $rows;
 
 	}
 

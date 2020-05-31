@@ -1,6 +1,15 @@
 <?php require 'functions.php'; 
 
-$user = $_SESSION['login'];
+if (@$_SESSION['login-admin']) {
+        
+        $user = $_SESSION['login-admin'];
+
+    } elseif(@$_SESSION['login-op']) {
+
+        $user = $_SESSION['login-op'];
+
+    }
+    
 $admin = tampilAdmin("SELECT id_admin FROM admin WHERE username = '$user'")[0];
 
 if (isset($_POST['ubah'])) {

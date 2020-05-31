@@ -1,9 +1,15 @@
 <?php require 'functions.php'; 
 
-$user = $_SESSION['login'];
-$admin = tampilAdmin("SELECT * FROM admin WHERE username = '$user'")[0];
+if (@$_SESSION['login-admin']) {
+        
+        $user = $_SESSION['login-admin'];
 
-var_dump($admin);
+    } elseif(@$_SESSION['login-op']) {
+
+        $user = $_SESSION['login-op'];
+
+    }
+$admin = tampilAdmin("SELECT * FROM admin WHERE username = '$user'")[0];
 
 if (isset($_POST['edit'])) {
         

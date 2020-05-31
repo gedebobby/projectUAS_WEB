@@ -37,6 +37,14 @@
                             <label for="email" class="control-label mb-1">Email</label>
                             <input id="email" name="email" type="text" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label for="role" class="control-label mb-1">Role</label>
+                            <select name="role" id="role" class="form-control col-sm-4">
+                                <option value="admin">Admin</option>  
+                                <option value="operator">Operator</option>                           
+                                
+                            </select>
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">

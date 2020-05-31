@@ -1,6 +1,6 @@
 <?php require 'functions.php';
 
-$dataadmin = tampilAdmin("SELECT * FROM admin");
+$dataadmin = tampilAdmin("SELECT * FROM admin"); 
 
         
     
@@ -49,7 +49,20 @@ $dataadmin = tampilAdmin("SELECT * FROM admin");
                         </div>
                     </td>
                     <td>
-                        <span class="role admin">admin</span>
+                        <?php 
+
+                            if ($row['role'] == "admin") {
+                                
+                                echo '<span class="role admin">admin</span>';
+
+                            } elseif($row['role'] == "operator") {
+
+                                echo '<span class="role member">operator</span>';
+
+                            }
+
+                         ?>
+                        
                     </td>
                     
                     <!-- <a href="index.php?page=edit-admin"><button class="btn btn-warning">
